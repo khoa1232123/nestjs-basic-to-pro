@@ -1,0 +1,16 @@
+### Send fetch songs request
+GET http://localhost:3000/songs
+
+### Send fetch song details request
+GET http://localhost:3000/songs/1232232
+
+### Send add song request
+POST http://localhost:3000/songs
+Content-Type: application/json
+
+{
+  "title": "New Song 3",
+  "artists": ["momo"],
+  "releasedDate": "2022-01-01",
+  "duration": "03:42"
+}
