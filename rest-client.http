@@ -1,8 +1,10 @@
+## Send fetch main
+GET http://localhost:3000/
 ### Send fetch songs request
 GET http://localhost:3000/songs
 
 ### Send fetch song details request
-GET http://localhost:3000/songs/1232232
+GET http://localhost:3000/songs/1724129759324
 
 ### Send add song request
 POST http://localhost:3000/songs
