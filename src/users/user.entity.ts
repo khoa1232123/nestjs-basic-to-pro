@@ -18,6 +18,6 @@ export class User {
   password: string;
 
   // a user can create many playlists
-  @OneToMany(() => Playlist, (playList) => playList.user)
-  playLists: Playlist[];
+  // @OneToMany(() => Playlist, (playList) => playList.user)
+  // playLists: Playlist[];
 }
