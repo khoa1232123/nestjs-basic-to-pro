@@ -1,8 +1,4 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
@@ -12,6 +8,12 @@ import { DevConfigService } from './common/providers/devConfigService';
 import { Song } from './songs/song.entity';
 import { SongsController } from './songs/songs.controller';
 import { SongsModule } from './songs/songs.module';
+import { Artist } from './artists/artist.entity';
+import { User } from './users/user.entity';
+import { Playlist } from './playlists/playlist.entity';
+import { PlaylistsModule } from './playlists/playlists.module';
+import { PlaylistsController } from './playlists/playlists.controller';
+import { AuthModule } from './auth/auth.module';
 
 const devConfig = { port: 3000 };
 const proConfig = { port: 400 };
@@ -19,6 +21,7 @@ const proConfig = { port: 400 };
 @Module({
   imports: [
     SongsModule,
+    PlaylistsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -26,9 +29,10 @@ const proConfig = { port: 400 };
       username: 'postgres',
       password: '123456',
       database: 'spotify-clone',
-      entities: [Song],
+      entities: [Song, Artist, User, Playlist],
       synchronize: true,
     }),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
@@ -55,6 +59,7 @@ export class AppModule implements NestModule {
     //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: 'songs', method: RequestMethod.POST });
     consumer.apply(LoggerMiddleware).forRoutes(SongsController);
+    consumer.apply(LoggerMiddleware).forRoutes(PlaylistsController);
     // throw new Error('Method not implemented');
   }
 }

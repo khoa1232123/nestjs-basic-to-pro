@@ -1,3 +1,4 @@
+import { Artist } from 'src/artists/artist.entity';
 import { Playlist } from 'src/playlists/playlist.entity';
 import {
   Column,
@@ -16,8 +17,8 @@ export class Song {
   @Column()
   title: string;
 
-  @Column('varchar', { array: true })
-  artists: string[];
+  // @Column('varchar', { array: true })
+  // artists: string[];
 
   @Column('date')
   releasedDate: Date;
@@ -28,11 +29,11 @@ export class Song {
   @Column('text')
   lyrics: string;
 
-  //   @ManyToMany(() => Artist, (artist) => artist.songs)
-  //   @JoinTable({ name: 'songs_artists' })
-  //   artists: Artist[];
+  @ManyToMany(() => Artist, (artist) => artist.songs, {cascade: true})
+  @JoinTable({ name: 'songs_artists' })
+  artists: Artist[];
 
   //   Many songs can belong to playlist for each unique user
-  // @ManyToOne(() => Playlist, (playlist) => playlist.songs)
-  // playList: Playlist;
+  @ManyToOne(() => Playlist, (playlist) => playlist.songs)
+  playList: Playlist;
 }

@@ -1,5 +1,6 @@
 ## Send fetch main
 GET http://localhost:3000/
+
 ### Send fetch songs request
 GET http://localhost:3000/songs/?page=1&limit=10
 
@@ -11,15 +12,15 @@ POST http://localhost:3000/songs
 Content-Type: application/json
 
 {
-  "title": "Lasting lover 3",
-  "artists": ["momo"],
-  "releasedDate": "2022-01-01",
+  "title": "Happy year",
+  "artists": [1],
+  "releasedDate": "2022-01-03",
   "duration": "03:42",
   "lyrics": "momo2"
 }
 
 ### Send delete song request
-DELETE http://localhost:3000/songs/3
+DELETE http://localhost:3000/songs/5
 
 ### Send update song request
 PUT http://localhost:3000/songs/5
@@ -31,4 +32,19 @@ Content-Type: application/json
   "releasedDate": "2022-01-04",
   "duration": "03:42",
   "lyrics": "momo"
+}
+
+### send get playlists
+GET http://localhost:3000/playlists?page=1&limit=10
+
+### create new Playlist
+POST http://localhost:3000/playlists
+Content-Type: application/json
+
+{
+  "name": "New Playlist 2",
+  "songs": [
+    7
+  ],
+  "user": 2
 }

@@ -31,6 +31,7 @@ export class SongsController {
   ) {
     console.log({ connection: this.connection });
   }
+
   @Get()
   findAll(
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
