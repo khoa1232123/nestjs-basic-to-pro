@@ -14,6 +14,7 @@ import { Playlist } from './playlists/playlist.entity';
 import { PlaylistsModule } from './playlists/playlists.module';
 import { PlaylistsController } from './playlists/playlists.controller';
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 const devConfig = { port: 3000 };
 const proConfig = { port: 400 };
@@ -33,6 +34,7 @@ const proConfig = { port: 400 };
       synchronize: true,
     }),
     AuthModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
@@ -59,7 +61,6 @@ export class AppModule implements NestModule {
     //   .apply(LoggerMiddleware)
     //   .forRoutes({ path: 'songs', method: RequestMethod.POST });
     consumer.apply(LoggerMiddleware).forRoutes(SongsController);
-    consumer.apply(LoggerMiddleware).forRoutes(PlaylistsController);
     // throw new Error('Method not implemented');
   }
 }

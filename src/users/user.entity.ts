@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Artist } from 'src/artists/artist.entity';
 import { Playlist } from 'src/playlists/playlist.entity';
 import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -13,10 +14,11 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({unique: true})
   email: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   // @OneToOne(() => Artist)
