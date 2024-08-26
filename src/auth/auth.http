@@ -16,6 +16,10 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "johndoe1@example.com",
+    "email": "johndoe@example.com",
     "password": "123456"
 }
+
+### Profile
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJzdWIiOjEsImlhdCI6MTcyNDY4NjE0NywiZXhwIjoxNzI0NzcyNTQ3fQ.1ioPDzicuhJoBP-ioeP2nK4WaFUWB6YxrhKKc681V94
