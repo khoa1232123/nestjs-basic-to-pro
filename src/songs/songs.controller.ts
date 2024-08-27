@@ -4,7 +4,6 @@ import {
   DefaultValuePipe,
   Delete,
   Get,
-  HttpException,
   HttpStatus,
   Inject,
   Param,
@@ -12,15 +11,20 @@ import {
   Post,
   Put,
   Query,
+  Req,
+  Request,
   Scope,
+  UseGuards,
 } from '@nestjs/common';
-import { SongsService } from './songs.service';
-import { CreateSongDTO } from './dto/create-song.dto';
-import { Connection } from 'src/common/constants/connection';
-import { Song } from './song.entity';
-import { DeleteResult, UpdateResult } from 'typeorm';
-import { UpdateSongDTO } from './dto/update-song.dto';
 import { Pagination } from 'nestjs-typeorm-paginate';
+import { Connection } from 'src/common/constants/connection';
+import { DeleteResult, UpdateResult } from 'typeorm';
+import { CreateSongDTO } from './dto/create-song.dto';
+import { UpdateSongDTO } from './dto/update-song.dto';
+import { Song } from './song.entity';
+import { SongsService } from './songs.service';
+import { ArtistJwtGuard } from 'src/artists/artist.jwt-guard';
+import { request } from 'express';
 
 @Controller({ path: 'songs', scope: Scope.REQUEST })
 export class SongsController {
@@ -53,7 +57,13 @@ export class SongsController {
   }
 
   @Post()
-  create(@Body() createSongDto: CreateSongDTO): Promise<Song> {
+  @UseGuards(ArtistJwtGuard)
+  create(
+    @Body() createSongDto: CreateSongDTO,
+    @Request() request,
+  ): Promise<Song> {
+    console.log(request.user);
+
     return this.songsService.create(createSongDto);
   }
 

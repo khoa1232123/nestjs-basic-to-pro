@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
+import { ArtistsModule } from 'src/artists/artists.module';
 import { UsersModule } from 'src/users/users.module';
 import { authConstants } from './auth.constants';
 import { AuthController } from './auth.controller';
@@ -12,6 +13,7 @@ import { JwtStrategy } from './jwt-strategy';
   exports: [AuthService],
   imports: [
     UsersModule,
+    ArtistsModule,
     JwtModule.register({
       secret: authConstants.secret,
       signOptions: {

@@ -3,10 +3,10 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "username": "johndoe",
-    "email": "johndoe@example.com",
+    "firstName": "Martin",
+    "lastName": "Gen",
+    "username": "martingen",
+    "email": "martingen@example.com",
     "password": "123456"
 }
 
@@ -16,10 +16,10 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "johndoe@example.com",
+    "email": "martingen@example.com",
     "password": "123456"
 }
 
 ### Profile
 GET http://localhost:3000/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAZXhhbXBsZS5jb20iLCJzdWIiOjEsImlhdCI6MTcyNDY4NjE0NywiZXhwIjoxNzI0NzcyNTQ3fQ.1ioPDzicuhJoBP-ioeP2nK4WaFUWB6YxrhKKc681V94
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNDc3MTgzNCwiZXhwIjoxNzI0ODU4MjM0fQ.brkVQC5wF9Wu1UUpoPWuiB8D_N_nhQ1QK5U8sYk-7KU

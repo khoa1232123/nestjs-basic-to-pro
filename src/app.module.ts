@@ -14,6 +14,7 @@ import { SongsController } from './songs/songs.controller';
 import { SongsModule } from './songs/songs.module';
 import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
+import { ArtistsModule } from './artists/artists.module';
 
 const devConfig = { port: 3000 };
 const proConfig = { port: 400 };
@@ -34,6 +35,7 @@ const proConfig = { port: 400 };
     }),
     AuthModule,
     UsersModule,
+    ArtistsModule,
   ],
   controllers: [AppController],
   providers: [
