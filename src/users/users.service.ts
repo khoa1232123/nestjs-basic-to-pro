@@ -6,6 +6,7 @@ import { CreateUserDTO } from './dto/create-user.dto';
 import * as bcrypt from 'bcryptjs';
 import { AuthService } from 'src/auth/auth.service';
 import { LoginDTO } from './dto/login.dto';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class UsersService {
@@ -17,7 +18,10 @@ export class UsersService {
   async create(userDTO: CreateUserDTO): Promise<User> {
     const salt = await bcrypt.genSalt();
     userDTO.password = await bcrypt.hash(userDTO.password, salt);
-    const user = await this.userRepository.save(userDTO);
+    const user = await this.userRepository.save({
+      ...userDTO,
+      apiKey: uuidv4(),
+    });
     delete user.password;
     return user;
   }
@@ -45,7 +49,11 @@ export class UsersService {
   async disable2FA(id: number): Promise<UpdateResult> {
     return this.userRepository.update(id, {
       enable2FA: false,
-      twoFASecket: null
+      twoFASecket: null,
     });
+  }
+
+  async findByApiKey(apiKey: string): Promise<User> {
+    return this.userRepository.findOneBy({ apiKey });
   }
 }

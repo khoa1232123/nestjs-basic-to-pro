@@ -6,9 +6,10 @@ import { authConstants } from './auth.constants';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { AuthJwtStrategy } from './auth.jwt.strategy';
+import { ApiKeyStrategy } from './api-key.strategy';
 
 @Module({
-  providers: [AuthService, AuthJwtStrategy],
+  providers: [AuthService, AuthJwtStrategy, ApiKeyStrategy],
   controllers: [AuthController],
   exports: [AuthService],
   imports: [
