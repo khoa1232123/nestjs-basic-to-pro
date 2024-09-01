@@ -11,6 +11,7 @@ Content-Type: application/json
 }
 
 
+
 ### Login
 POST http://localhost:3000/auth/login
 Content-Type: application/json
@@ -23,3 +24,20 @@ Content-Type: application/json
 ### Profile
 GET http://localhost:3000/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNDc3MTgzNCwiZXhwIjoxNzI0ODU4MjM0fQ.brkVQC5wF9Wu1UUpoPWuiB8D_N_nhQ1QK5U8sYk-7KU
+
+### Enable 2FA
+GET http://localhost:3000/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNTE1ODEyNSwiZXhwIjoxNzI1MjQ0NTI1fQ.q5geUJxtf8GbJl5JaPdQvIk3vQgeO-BtibPVG1_CzzY
+
+### Validate 2FA Token
+POST http://localhost:3000/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNTE1ODEyNSwiZXhwIjoxNzI1MjQ0NTI1fQ.q5geUJxtf8GbJl5JaPdQvIk3vQgeO-BtibPVG1_CzzY
+Content-Type: application/json
+
+{
+    "token": "877493"
+}
+
+### Disable 2FA
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNTE1ODEyNSwiZXhwIjoxNzI1MjQ0NTI1fQ.q5geUJxtf8GbJl5JaPdQvIk3vQgeO-BtibPVG1_CzzY

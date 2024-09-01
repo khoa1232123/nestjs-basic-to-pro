@@ -21,6 +21,12 @@ export class User {
   @Exclude()
   password: string;
 
+  @Column({nullable: true, type: 'text'})
+  twoFASecket: string;
+
+  @Column({default: false, type: 'boolean'})
+  enable2FA: boolean;
+
   // @OneToOne(() => Artist)
   // @JoinColumn()
   // artist: Artist;

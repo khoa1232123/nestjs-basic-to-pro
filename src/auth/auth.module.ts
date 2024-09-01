@@ -5,10 +5,10 @@ import { UsersModule } from 'src/users/users.module';
 import { authConstants } from './auth.constants';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { JwtStrategy } from './jwt-strategy';
+import { AuthJwtStrategy } from './auth.jwt.strategy';
 
 @Module({
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, AuthJwtStrategy],
   controllers: [AuthController],
   exports: [AuthService],
   imports: [
