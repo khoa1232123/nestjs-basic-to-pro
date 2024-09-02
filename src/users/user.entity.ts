@@ -1,7 +1,14 @@
 import { Exclude } from 'class-transformer';
 import { Artist } from 'src/artists/artist.entity';
 import { Playlist } from 'src/playlists/playlist.entity';
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('users')
 export class User {
@@ -14,17 +21,17 @@ export class User {
   @Column()
   lastName: string;
 
-  @Column({unique: true})
+  @Column({ unique: true })
   email: string;
 
   @Column()
   @Exclude()
   password: string;
 
-  @Column({nullable: true, type: 'text'})
+  @Column({ nullable: true, type: 'text' })
   twoFASecket: string;
 
-  @Column({default: false, type: 'boolean'})
+  @Column({ default: false, type: 'boolean' })
   enable2FA: boolean;
 
   @Column()
