@@ -16,13 +16,9 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "johndoe@example.com",
+    "email": "martingen@example.com",
     "password": "123456"
 }
-
-### Profile
-GET http://localhost:3000/auth/profile
-Authorization: Bearer 6e15c892-c70a-458f-91f7-ee5086ac298b
 
 ### Enable 2FA
 GET http://localhost:3000/auth/enable-2fa
@@ -40,3 +36,8 @@ Content-Type: application/json
 ### Disable 2FA
 GET http://localhost:3000/auth/disable-2fa
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdlbkBleGFtcGxlLmNvbSIsInVzZXJJZCI6MiwiYXJ0aXN0SWQiOjEsImlhdCI6MTcyNTE1ODEyNSwiZXhwIjoxNzI1MjQ0NTI1fQ.q5geUJxtf8GbJl5JaPdQvIk3vQgeO-BtibPVG1_CzzY
+
+
+### Profile
+GET http://localhost:3000/auth/profile
+Authorization: Bearer c444ffee-3db8-41c1-9c19-e46cb66a3665
