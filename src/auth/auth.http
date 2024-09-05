@@ -41,3 +41,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpb
 ### Profile
 GET http://localhost:3000/auth/profile
 Authorization: Bearer c444ffee-3db8-41c1-9c19-e46cb66a3665
+
+### Test
+GET http://localhost:3000/auth/test

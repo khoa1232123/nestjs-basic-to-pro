@@ -1,35 +1,38 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { dataSourceOptions, typeOrmAsyncConfig } from 'db/data-source';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Artist } from './artists/artist.entity';
+import { ArtistsModule } from './artists/artists.module';
 import { AuthModule } from './auth/auth.module';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { DevConfigService } from './common/providers/devConfigService';
-import { Playlist } from './playlists/playlist.entity';
+import configuration from './config/configuration';
 import { PlaylistsModule } from './playlists/playlists.module';
-import { Song } from './songs/song.entity';
+import { SeedModule } from './seed/seed.module';
 import { SongsController } from './songs/songs.controller';
 import { SongsModule } from './songs/songs.module';
-import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
-import { ArtistsModule } from './artists/artists.module';
-import { dataSourceOptions } from 'db/data-source';
-import { SeedModule } from './seed/seed.module';
 
 const devConfig = { port: 3000 };
 const proConfig = { port: 400 };
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.development.env', '.production.env'],
+      isGlobal: true,
+      load: [configuration],
+    }),
     SongsModule,
     PlaylistsModule,
-    TypeOrmModule.forRoot(dataSourceOptions),
+    TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     AuthModule,
     UsersModule,
     ArtistsModule,
-    SeedModule,
+    // SeedModule,
   ],
   controllers: [AppController],
   providers: [
