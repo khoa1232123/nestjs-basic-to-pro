@@ -1,7 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { dataSourceOptions, typeOrmAsyncConfig } from 'db/data-source';
+import { typeOrmAsyncConfig } from 'db/data-source';
+import { validate } from 'env.validation';
 import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,13 +12,12 @@ import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { DevConfigService } from './common/providers/devConfigService';
 import configuration from './config/configuration';
 import { PlaylistsModule } from './playlists/playlists.module';
-import { SeedModule } from './seed/seed.module';
 import { SongsController } from './songs/songs.controller';
 import { SongsModule } from './songs/songs.module';
 import { UsersModule } from './users/users.module';
 
 const devConfig = { port: 3000 };
-const proConfig = { port: 400 };
+const proConfig = { port: 4000 };
 
 @Module({
   imports: [
@@ -25,6 +25,7 @@ const proConfig = { port: 400 };
       envFilePath: ['.development.env', '.production.env'],
       isGlobal: true,
       load: [configuration],
+      validate: validate
     }),
     SongsModule,
     PlaylistsModule,
