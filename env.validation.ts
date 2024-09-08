@@ -32,8 +32,6 @@ class EnvironmentVariables {
 }
 
 export function validate(config: Record<string, unknown>) {
-  console.log('config', config);
-  
   // plainInstance converts plain objects into class instances
   const validatedConfig = plainToInstance(EnvironmentVariables, config, {
     /**
@@ -42,7 +40,6 @@ export function validate(config: Record<string, unknown>) {
      * */
     enableImplicitConversion: true,
   });
-  console.log('validatedConfig', validatedConfig);
 
   const errors = validateSync(validatedConfig, {
     skipMissingProperties: false,
