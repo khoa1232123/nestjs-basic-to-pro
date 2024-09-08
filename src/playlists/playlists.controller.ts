@@ -3,8 +3,10 @@ import { PlaylistsService } from './playlists.service';
 import { CreatePlaylistDTO } from './dto/create-playlist.dto';
 import { Playlist } from './playlist.entity';
 import { Pagination } from 'nestjs-typeorm-paginate';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('playlists')
+@ApiTags('Playlists')
 export class PlaylistsController {
   constructor(
     private playlistService: PlaylistsService, // Add service here

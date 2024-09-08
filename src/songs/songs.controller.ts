@@ -25,8 +25,10 @@ import { Song } from './song.entity';
 import { SongsService } from './songs.service';
 import { ArtistJwtGuard } from 'src/artists/artist.jwt-guard';
 import { request } from 'express';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller({ path: 'songs', scope: Scope.REQUEST })
+@ApiTags('Songs')
 export class SongsController {
   constructor(
     private songsService: SongsService,

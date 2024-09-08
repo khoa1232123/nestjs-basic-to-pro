@@ -16,14 +16,18 @@ import { AuthJwtGuard } from './auth.jwt.guard';
 import { ValidateTokenDTO } from './dto/validate-token.dto';
 import { UpdateResult } from 'typeorm';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('Auth')
 export class AuthController {
   constructor(
     private userService: UsersService,
     private authService: AuthService,
   ) {}
   @Post('signup')
+  @ApiOperation({ summary: 'Register a new user' })
+  @ApiResponse({ status: 201, description: 'It will return the user created' })
   signup(
     @Body()
     userDTO: CreateUserDTO,
