@@ -15,13 +15,24 @@ async function bootstrap() {
     .setTitle('Spotify Clone')
     .setDescription('The Spotify Clone API description')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Enter JWT token',
+        in: 'header',
+      },
+      'JWT-auth',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
   const configService = app.get(ConfigService);
-  await app.listen(configService.get<number>('port'));
+  await app.listen(configService.get<number>('port') || 4000);
 
   if (module.hot) {
     module.hot.accept();
